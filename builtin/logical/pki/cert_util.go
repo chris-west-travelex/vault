@@ -124,6 +124,17 @@ func validateCommonNames(req *logical.Request, commonNames []string, role *roleE
 			}
 		}
 
+		if len(role.AllowTheseNames) != 0 {
+			for _, thisName := range strings.Split(role.AllowTheseNames, ",") {
+				if len(role.AllowedBaseDomain) == 0 && thisName == name {
+					continue
+				}
+				if len(role.AllowedBaseDomain) != 0 && thisName+"."+role.AllowedBaseDomain == name {
+					continue
+				}
+			}
+		}
+
 		if role.AllowAnyName {
 			continue
 		}

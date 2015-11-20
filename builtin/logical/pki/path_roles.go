@@ -82,6 +82,14 @@ including wildcard subdomains. See the documentation for
 more information.`,
 			},
 
+			"allow_these_names": &framework.FieldSchema{
+				Type:    framework.TypeString,
+				Default: "",
+				Description: `If set, clients can request certificates for
+one of the comma-delimited list of CNs given. See the documentation
+for more information.`,
+			},
+
 			"allow_any_name": &framework.FieldSchema{
 				Type:    framework.TypeBool,
 				Default: false,
@@ -243,6 +251,7 @@ func (b *backend) pathRoleCreate(
 		AllowedBaseDomain:     data.Get("allowed_base_domain").(string),
 		AllowTokenDisplayName: data.Get("allow_token_displayname").(bool),
 		AllowSubdomains:       data.Get("allow_subdomains").(bool),
+		AllowTheseNames:       data.Get("allow_these_names").(string),
 		AllowAnyName:          data.Get("allow_any_name").(bool),
 		EnforceHostnames:      data.Get("enforce_hostnames").(bool),
 		AllowIPSANs:           data.Get("allow_ip_sans").(bool),
@@ -335,6 +344,7 @@ type roleEntry struct {
 	AllowedBaseDomain     string `json:"allowed_base_domain" structs:"allowed_base_domain" mapstructure:"allowed_base_domain"`
 	AllowTokenDisplayName bool   `json:"allow_token_displayname" structs:"allow_token_displayname" mapstructure:"allow_token_displayname"`
 	AllowSubdomains       bool   `json:"allow_subdomains" structs:"allow_subdomains" mapstructure:"allow_subdomains"`
+	AllowTheseNames       string `json:"allow_these_names" structs:"allow_these_names" mapstructure:"allow_these_names"`
 	AllowAnyName          bool   `json:"allow_any_name" structs:"allow_any_name" mapstructure:"allow_any_name"`
 	EnforceHostnames      bool   `json:"enforce_hostnames" structs:"enforce_hostnames" mapstructure:"enforce_hostnames"`
 	AllowIPSANs           bool   `json:"allow_ip_sans" structs:"allow_ip_sans" mapstructure:"allow_ip_sans"`

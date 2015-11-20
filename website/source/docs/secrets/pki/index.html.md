@@ -532,6 +532,17 @@ If you get stuck at any time, simply run `vault path-help pki` or with a subpath
         Defaults to `false`.
       </li>
       <li>
+        <span class="param">allow_these_domains</span>
+        <span class="param-flags">optional</span>
+        If set, clients can request certificates with CNs that
+        are specifically within the given comma-delimited list.
+        If set in conjunction with `allowed_base_domain`, the
+        list of CNs will be treated as subdomains within the
+        given base domain. Wildcard names are permitted.
+        Redundant when using the `allow_any_name` option.
+        There is no default.
+      </li>
+      <li>
         <span class="param">allow_any_name</span>
         <span class="param-flags">optional</span>
         If set, clients can request any CN. Useful in some

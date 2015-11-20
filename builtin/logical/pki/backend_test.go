@@ -378,6 +378,11 @@ func generateRoleSteps(t *testing.T) []logicaltest.TestStep {
 		commonNames.SubdomainWildcard = true
 		addCnTests()
 
+		roleVals.AllowTheseNames = "foo,bar"
+		roleVals.AllowedBaseDomain = "example.com"
+		commonNames.BaseDomain = true
+		addCnTests()
+
 		roleVals.AllowAnyName = true
 		roleVals.EnforceHostnames = true
 		commonNames.AnyHost = true

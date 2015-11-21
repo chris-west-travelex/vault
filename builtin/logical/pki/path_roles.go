@@ -86,8 +86,8 @@ more information.`,
 				Type:    framework.TypeString,
 				Default: "",
 				Description: `If set, clients can request certificates for
-one of the comma-delimited list of CNs given. See the documentation
-for more information.`,
+one of the comma-delimited list of CNs given. See the
+documentation for more information.`,
 			},
 
 			"allow_any_name": &framework.FieldSchema{
